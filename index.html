@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE UNBREAKABLE | Elite Digital Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --neon: #6BFFF7;
+            --obsidian: #0A0C15;
+            --steel: #2D3047;
+            --glow: radial-gradient(circle at center, #6BFFF755, transparent 60%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--obsidian);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .cyber-grid {
+            position: fixed;
+            width: 200vw;
+            height: 200vh;
+            background-image: 
+                linear-gradient(var(--steel) 1px, transparent 1px),
+                linear-gradient(90deg, var(--steel) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.1;
+            animation: gridScroll 200s linear infinite;
+            z-index: -1;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        @keyframes gridScroll {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-40px, -40px); }
+        }
+
+        .quantum-dots {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .quantum-dot {
+            position: absolute;
+            background: var(--neon);
+            border-radius: 50%;
+            filter: blur(15px);
+            opacity: 0.1;
+            animation: pulse 4s infinite;
+            transform: translateZ(0);
+            will-change: transform, opacity;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.8); opacity: 0.05; }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            background: rgba(10, 12, 21, 0.4);
+            border-bottom: 1px solid var(--steel);
+            z-index: 1000;
+        }
+
+        .hologram-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--neon) 30%, #FFFFFF 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px var(--neon);
+            animation: hologram 3s ease-in-out infinite;
+        }
+
+        @keyframes hologram {
+            0%, 100% { opacity: 1; filter: hue-rotate(0deg); }
+            50% { opacity: 0.8; filter: hue-rotate(10deg); }
+        }
+
+        .mainframe {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 8rem 2rem;
+        }
+
+        .cyber-terminal {
+            max-width: 1200px;
+            background: rgba(16, 18, 27, 0.6);
+            border: 1px solid var(--steel);
+            border-radius: 2rem;
+            backdrop-filter: blur(40px);
+            padding: 4rem;
+            box-shadow: 0 0 60px #6BFFF722;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-terminal::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--glow);
+            animation: rotate 20s linear infinite;
+            transform: translateZ(0);
+            will-change: transform;
+            opacity: 0.3;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--neon), #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .nexus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .cyber-link {
+            background: rgba(32, 34, 47, 0.4);
+            border: 1px solid var(--steel);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        @media (hover: hover) {
+            .cyber-link:hover {
+                transform: translateY(-5px);
+                background: rgba(45, 48, 71, 0.4);
+                box-shadow: 0 10px 30px #6BFFF715;
+            }
+        }
+
+        .cyber-link::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 45%, var(--neon) 50%, transparent 55%);
+            animation: shine 6s infinite;
+            opacity: 0.1;
+        }
+
+        .link-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--neon);
+            filter: drop-shadow(0 0 10px var(--neon));
+        }
+
+        .omega-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 3rem;
+            background: rgba(107, 255, 247, 0.1);
+            border: 2px solid var(--neon);
+            border-radius: 1rem;
+            color: var(--neon);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        .omega-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 45%, var(--neon) 50%, transparent 55%);
+            animation: shine 4s infinite;
+        }
+
+        .omega-button:hover {
+            background: rgba(107, 255, 247, 0.2);
+            box-shadow: 0 0 30px var(--neon);
+        }
+
+        footer {
+            background: rgba(10, 12, 21, 0.8);
+            border-top: 1px solid var(--steel);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .cyber-terminal {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .omega-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .cyber-terminal::before {
+                animation-duration: 40s;
+                opacity: 0.2;
+            }
+            
+            .cyber-grid {
+                animation-duration: 400s;
+                background-size: 30px 30px;
+            }
+            
+            .quantum-dot {
+                filter: blur(8px);
+                animation: mobilePulse 6s infinite;
+            }
+            
+            @keyframes mobilePulse {
+                0%, 100% { transform: scale(0.8); opacity: 0.08; }
+                50% { transform: scale(1.4); opacity: 0.04; }
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hologram-logo {
+                font-size: 2rem;
+                text-shadow: 0 0 15px var(--neon);
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            }
+
+            .cyber-terminal {
+                padding: 2rem 1.5rem;
+                border-radius: 1.5rem;
+            }
+
+            .nexus-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 3rem 0;
+            }
+
+            .cyber-link {
+                padding: 2rem;
+                border-radius: 1rem;
+            }
+
+            .link-icon {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .omega-button {
+                padding: 1.25rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .cyber-link h3 {
+                font-size: 1.1rem;
+            }
+            
+            .cyber-link p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <div class="quantum-dots"></div>
+    
+    <header>
+        <div class="hologram-logo">UNBREAKABLE PRODUCTS</div>
+    </header>
+
+    <main class="mainframe">
+        <div class="cyber-terminal">
+            <h1>Digital Immortality<br>Perfected</h1>
+            
+            <a href="https://theunbreakable007.github.io/The-Unbreakable-gaming-/" 
+               class="omega-button"
+               target="_blank">
+                <i class="fas fa-wormhole"></i>
+                Enter the Nexus
+            </a>
+
+            <div class="nexus-grid">
+                <a href="https://youtube.com/@theunbreakablegaming-007.?si=2gPEh3PhEkvxwdBi" class="cyber-link" target="_blank">
+                    <i class="fab fa-youtube link-icon"></i>
+                    <h3>YouTube Dominion</h3>
+                    <p>Visual Masterpieces</p>
+                </a>
+                
+                <a href="https://music.youtube.com/playlist?list=OLAK5uy_nV21KC2hKmDnULIc8iK7YL-NCI2gXx4OE&si=cQPEnn6-6k-cIDsi" class="cyber-link" target="_blank">
+                    <i class="fab fa-youtube link-icon"></i>
+                    <h3>YT Music Nexus</h3>
+                    <p>Sonic Perfection</p>
+                </a>
+
+                <a href="https://open.spotify.com/track/65gCBBvqVJCX0E5Mbyajqa?si=VJSuuaLEQmukwki_EOOm7g" class="cyber-link" target="_blank">
+                    <i class="fab fa-spotify link-icon"></i>
+                    <h3>Spotify Vault</h3>
+                    <p>Premium Streaming</p>
+                </a>
+
+                <a href="https://music.apple.com/us/song/hey-its-paradise/1808773877" class="cyber-link" target="_blank">
+                    <i class="fab fa-apple link-icon"></i>
+                    <h3>Apple Archives</h3>
+                    <p>Lossless Audio</p>
+                </a>
+
+                <a href="https://music.amazon.com/tracks/B0F4XYDNMR?marketplaceId=A3K6Y4MI8GDYMT&musicTerritory=IN&ref=dm_sh_IohYTyCV1IOpiF9pWmPDcErD1" class="cyber-link" target="_blank">
+                    <i class="fab fa-amazon link-icon"></i>
+                    <h3>Amazon Citadel</h3>
+                    <p>HD Audio Streaming</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p style="opacity: 0.7;">© <span id="currentYear"></span> THE UNBREAKABLE - All rights reserved</p>
+        <div style="margin-top: 2rem; display: flex; gap: 1.5rem; justify-content: center;">
+            <a href="https://theunbreakable007.github.io/The-Unbreakable-gaming-/" 
+               style="color: var(--neon); text-decoration: none;"
+               target="_blank">
+               Digital Stronghold
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Quantum dots initialization
+            const mobile = window.matchMedia("(max-width: 768px)").matches;
+            const dotsCount = mobile ? 40 : 100;
+            const container = document.querySelector('.quantum-dots');
+            
+            for(let i = 0; i < dotsCount; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'quantum-dot';
+                dot.style.cssText = `
+                    width: ${Math.random() * 25 + 8}px;
+                    height: ${dot.style.width};
+                    left: ${Math.random() * 100}vw;
+                    top: ${Math.random() * 100}vh;
+                    animation-delay: ${Math.random() * 4}s;
+                `;
+                container.appendChild(dot);
+            }
+
+            // Year auto-updater
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
